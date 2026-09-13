@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post - Polar</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css?v=4">
+  <!-- Lightweight Markdown parser (zero dependencies, fast) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+  <header class="container header">
+    <a href="/" class="brand">
+      <span class="color-dot"></span>
+      <span>Polar</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/projects.html">Projects</a></li>
+        <li><a href="/posts.html">Posts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <a href="/posts.html" class="link" style="display: inline-block; margin-bottom: 2rem;">&larr; Back to all
+        posts</a>
+    </div>
+
+    <article id="article-content" class="article-body">
+      <p style="color: var(--text-muted);">Loading article...</p>
+    </article>
+  </main>
+
+  <footer class="container footer">
+    <p>&copy; 2026 Snow</p>
+    <ul class="nav-links">
+      <li><a href="/terms.html">Terms of Service</a></li>
+      <li><a href="/privacy.html">Privacy Policy</a></li>
+      <li><a href="https://github.com/adieltan" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/dHGqUZNqCu" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    async function renderPost() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("post");
+      const articleEl = document.getElementById("article-content");
+
+      if (!slug) {
+        articleEl.innerHTML = '<h1>Post Not Found</h1><p style="color: var(--text-muted);">No article slug provided in URL.</p>';
+        return;
+      }
+
+      try {
+        // Fetch metadata from manifest
+        let postMeta = null;
+        try {
+          const indexRes = await fetch("/posts/index.json");
+          const allPosts = await indexRes.json();
+          postMeta = allPosts.find(p => p.slug === slug);
+        } catch (e) {
+          // ignore manifest error
+        }
+
+        const response = await fetch(`/posts/${slug}.md`);
+        if (!response.ok) {
+          throw new Error("Post file not found");
+        }
+        const markdown = await response.text();
+        
+        let metaHtml = "";
+        if (postMeta) {
+          metaHtml = `
+            <div style="display: flex; gap: 1rem; color: var(--text-muted); font-size: 0.88rem; font-family: var(--font-mono); margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+              <span>${postMeta.date}</span>
+              <span>&middot;</span>
+              <span>By ${postMeta.author || "Snow"}</span>
+            </div>
+          `;
+        }
+
+        articleEl.innerHTML = marked.parse(markdown);
+
+        if (metaHtml) {
+          const firstH1 = articleEl.querySelector("h1");
+          if (firstH1) {
+            firstH1.insertAdjacentHTML("afterend", metaHtml);
+          } else {
+            articleEl.insertAdjacentHTML("afterbegin", metaHtml);
+          }
+        }
+
+        // Update document title with first h1 found
+        const firstH1 = articleEl.querySelector("h1");
+        if (firstH1) {
+          document.title = `${firstH1.textContent} - Polar`;
+        }
+      } catch (err) {
+        articleEl.innerHTML = '<h1>Article Not Found</h1><p style="color: var(--text-muted);">Could not load the requested article.</p>';
+      }
+    }
+    renderPost();
+  </script>
+
+</body>
+
+</html>

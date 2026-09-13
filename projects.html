@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Polar</title>
+  <title>Projects - Polar</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -27,10 +27,27 @@
 
   <main class="container">
     <section class="section">
-      <h1><span id="greeting" class="greeting-text">Hello.</span></h1>
+      <h1>Projects</h1>
       <p class="lead">
-        Hehe
+        A list of things I've built, concepts I'm exploring and things yet to be done.
       </p>
+
+      <div class="grid" style="margin-top: 2rem;">
+        <div class="card">
+          <h3>Polar</h3>
+          <p>A minimalist personal showcase and portal built with pure semantic HTML5 and modern CSS variables. Zero
+            frameworks, zero dependencies.</p>
+          <a href="https://github.com/adieltan/polar" target="_blank" rel="noopener" class="link">View on GitHub
+            &rarr;</a>
+        </div>
+
+        <div class="card">
+          <h3>Glacier</h3>
+          <p>Expense Tracker for Android</p>
+          <a href="https://github.com/adieltan/Glacier" target="_blank" rel="noopener" class="link">View on GitHub
+            &rarr;</a>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -44,29 +61,6 @@
     </ul>
   </footer>
 
-  <script>
-    const greetings = [
-      "Hello.",
-      "你好。",
-      "Hallo.",
-      "안녕하세요.",
-      "Apa khabar?",
-    ];
-    let i = 0;
-    const el = document.getElementById("greeting");
-
-    setInterval(() => {
-      el.classList.add("fade-out");
-      setTimeout(() => {
-        i = (i + 1) % greetings.length;
-        el.textContent = greetings[i];
-        el.style.transform = "translateY(6px)";
-        el.offsetHeight; // Force reflow
-        el.classList.remove("fade-out");
-        el.style.transform = "";
-      }, 350);
-    }, 2200);
-  </script>
 </body>
 
 </html>

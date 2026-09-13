@@ -1,16 +1,16 @@
-# 🧭 Polar
+# Polar
 
-**Polar** is a minimalist showcase website for my projects
+**Polar** is a minimalist showcase website for my projects.
+
 ---
 
-## 🛠️ Stack & Principles
+## Stack & Principles
 - **Pure Vanilla:** Modern semantic HTML5, CSS3 with CSS variables, zero JavaScript dependencies.
 - **Ultra-Fast & Lightweight:** Zero build step, instant cold-load performance.
-- **Production Server:** Hosted on `a456u` (Ubuntu Linux) via Docker Nginx, routed through Cloudflare Tunnel with automatic HTTPS.
 
 ---
 
-## 💻 Local Development
+## Local Development
 
 Run the local preview server:
 ```bash
@@ -20,15 +20,10 @@ Run the local preview server:
 
 ---
 
-## 🚀 1-Command Deployment
-
-Sync updates directly to the production server:
-```bash
-chmod +x deploy.sh
-./deploy.sh
-```
+## Live URL
+- [Polar](https://909090909.xyz)
 
 ---
 
-## 🌐 Live URLs
-- **Public Domain:** [https://909090909.xyz/](https://909090909.xyz/)
+## License
+Copyright (c) 2026 Snow. All rights reserved.

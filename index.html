@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polar · Systems & Software Showcase</title>
+  <meta name="description" content="Engineering showcase of self-hosted systems, high-performance microservices, and local AI.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 32 32">
+            <path d="M16 4 L18.5 13.5 L28 16 L18.5 18.5 L16 28 L13.5 18.5 L4 16 L13.5 13.5 Z"/>
+          </svg>
+        </div>
+        <span>Polar</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li>
+            <div class="node-status" title="Home Server Node Status">
+              <span class="pulse-dot"></span>
+              <span>a456u online</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-tag">
+        <span>⚡ 909090909.xyz</span>
+        <span>•</span>
+        <span>Systems & Engineering Showcase</span>
+      </div>
+      
+      <h1>Building resilient systems, local AI, and bare-metal software.</h1>
+      
+      <p class="hero-subtitle">
+        A personal showcase of self-hosted microservices, kernel-level telemetry daemons, 
+        and offline-first AI models running on dedicated edge hardware.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          Explore Projects
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub Profile
+        </a>
+      </div>
+    </section>
+
+    <!-- Featured Projects Showcase -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Featured Engineering Projects</h2>
+        <p class="section-desc">Active services engineered and deployed on the local Linux cluster.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: Glacier -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title-area">
+              <h3 class="project-title">Glacier AI</h3>
+            </div>
+            <span class="badge badge-live">
+              <span class="pulse-dot"></span>
+              Live Service
+            </span>
+          </div>
+
+          <p class="project-desc">
+            An offline-first, high-throughput receipt parsing microservice paired with local large language model inference. 
+            Extracts complex transaction data from physical receipts and synthesizes structured financial SQLite records 
+            without leaking sensitive personal spending data to cloud APIs.
+          </p>
+
+          <ul class="project-features">
+            <li>Zero-shot transaction categorization via Ollama</li>
+            <li>Embedded SQLite WAL schema synthesis</li>
+            <li>Sub-second Axum JSON asynchronous pipeline</li>
+            <li>Air-gapped local model processing</li>
+          </ul>
+
+          <div class="tech-tags">
+            <span class="tag">Rust</span>
+            <span class="tag">Axum</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">qwen2.5:1.5b</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">Docker</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://glacier.909090909.xyz" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              Launch Glacier ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2: Shao -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title-area">
+              <h3 class="project-title">Shao (哨兵)</h3>
+            </div>
+            <span class="badge badge-system">
+              Sentinel Node
+            </span>
+          </div>
+
+          <p class="project-desc">
+            A single-binary hardware telemetry daemon and dark glassmorphic dashboard monitoring host health. 
+            Interfaces directly with Linux kernel endpoints to calculate real-time package wattage consumption, 
+            fan tachometer speeds, and provide safe remote host power control.
+          </p>
+
+          <ul class="project-features">
+            <li>Intel RAPL micro-Joule wattage tracking</li>
+            <li>Direct /sys/class/hwmon temperature sampling</li>
+            <li>Embedded 7-day rolling time-series database</li>
+            <li>Systemd DBus & SysRq authenticated reboot/poweroff</li>
+          </ul>
+
+          <div class="tech-tags">
+            <span class="tag">Rust</span>
+            <span class="tag">Linux RAPL</span>
+            <span class="tag">hwmon</span>
+            <span class="tag">Systemd DBus</span>
+            <span class="tag">SQLite Time-Series</span>
+            <span class="tag">Dark Glassmorphic UI</span>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              Inspect Architecture ↗
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- System Architecture & Infrastructure -->
+    <section id="architecture" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Infrastructure & Hosting Architecture</h2>
+        <p class="section-desc">Zero open router ports. Multi-tier private networking and encrypted edge tunnels.</p>
+      </div>
+
+      <div class="infra-card">
+        <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+          This showcase and its companion services are hosted directly on an energy-efficient Ubuntu Linux laptop node 
+          acting as an always-on home server with built-in battery UPS protection.
+        </p>
+
+        <div class="infra-grid">
+          <div class="infra-item">
+            <div class="infra-icon">💻</div>
+            <div class="infra-title">Hardware Node</div>
+            <div class="infra-desc">Asus A456U (Intel i5-7200U, 12 GB RAM, SATA SSD). Consumes 6W–14W average power.</div>
+          </div>
+
+          <div class="infra-item">
+            <div class="infra-icon">🛡️</div>
+            <div class="infra-title">Cloudflare Tunnel</div>
+            <div class="infra-desc">Outbound encrypted QUIC connection. Zero NAT port forwards; origin IP shielded from scanners.</div>
+          </div>
+
+          <div class="infra-item">
+            <div class="infra-icon">🔒</div>
+            <div class="infra-title">Tailscale Mesh</div>
+            <div class="infra-desc">End-to-end WireGuard encrypted admin mesh for terminal SSH and private service access.</div>
+          </div>
+
+          <div class="infra-item">
+            <div class="infra-icon">🐳</div>
+            <div class="infra-title">Dockge Orchestration</div>
+            <div class="infra-desc">Reactive Docker Compose stack management with isolated bridges and persistent bind mounts.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-wrapper">
+      <div>
+        <p>© 2026 Polar · 909090909.xyz</p>
+        <p style="font-size: 0.76rem; margin-top: 0.25rem;">Built with Vanilla HTML & CSS. Zero client-side bloat.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

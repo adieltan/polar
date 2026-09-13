@@ -2,3 +2,7 @@
 *.swp
 *~
 .vscode/
+
+# Local deployment scripts (contains server hostname)
+deploy.sh
+.env

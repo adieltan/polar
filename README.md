@@ -1,7 +1,6 @@
-# 🧭 Polar (`909090909.xyz`)
+# 🧭 Polar
 
-**Polar** is a minimalist engineering showcase website for self-hosted services, microservices, and local AI projects.
-
+**Polar** is a minimalist showcase website for my projects
 ---
 
 ## 🛠️ Stack & Principles
@@ -29,10 +28,7 @@ chmod +x deploy.sh
 ./deploy.sh
 ```
 
-This uses `rsync` over SSH to update `/home/rh/stacks/cloudflare-tunnel/html/` on `a456u`.
-
 ---
 
 ## 🌐 Live URLs
 - **Public Domain:** [https://909090909.xyz/](https://909090909.xyz/)
-- **Internal Preview:** [http://a456u:8080](http://a456u:8080)

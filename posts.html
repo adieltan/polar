@@ -18,9 +18,9 @@
     </a>
     <nav>
       <ul class="nav-links">
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/projects.html">Projects</a></li>
-        <li><a href="/posts.html">Posts</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/posts">Posts</a></li>
       </ul>
     </nav>
   </header>
@@ -43,8 +43,8 @@
   <footer class="container footer">
     <p>&copy; 2026 Snow</p>
     <ul class="nav-links">
-      <li><a href="/terms.html">Terms of Service</a></li>
-      <li><a href="/privacy.html">Privacy Policy</a></li>
+      <li><a href="/terms">Terms of Service</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
       <li><a href="https://github.com/adieltan" target="_blank" rel="noopener">GitHub</a></li>
       <li><a href="https://discord.gg/dHGqUZNqCu" target="_blank" rel="noopener">Discord</a></li>
     </ul>
@@ -54,8 +54,8 @@
     async function loadPosts() {
       const container = document.getElementById("posts-container");
       try {
-        const response = await fetch("/posts/index.json");
-        const posts = await response.json();
+        const res = await fetch("/posts/index.json");
+        const posts = await res.json();
 
         if (!posts || posts.length === 0) {
           container.innerHTML = '<li style="color: var(--text-muted);">No posts published yet.</li>';
@@ -72,7 +72,7 @@
           <li class="post-item">
             <div class="post-meta">
               <span class="post-date">${formatMonth(post.date)}</span>
-              <a href="/post.html?post=${post.slug}" class="post-title">${post.title}</a>
+              <a href="/post?post=${post.slug}" class="post-title">${post.title}</a>
             </div>
             <p class="post-desc">${post.description}</p>
           </li>

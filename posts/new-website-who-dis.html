@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Website, Who Dis? - Polar</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css?v=4">
+</head>
+
+<body>
+
+  <header class="container header">
+    <a href="/" class="brand">
+      <span class="color-dot"></span>
+      <span>Polar</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/posts">Posts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div style="padding-top: 1.5rem;">
+      <a href="/posts" class="link" style="display: inline-block; margin-bottom: 2rem;">&larr; Back to all posts</a>
+    </div>
+
+    <article class="article-body">
+      <h1>New Website, Who Dis?</h1>
+
+      <div style="display: flex; gap: 1rem; color: var(--text-muted); font-size: 0.88rem; font-family: var(--font-mono); margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+        <time datetime="2026-09-13">2026-09-13</time>
+        <span>&middot;</span>
+        <span>By Snow</span>
+      </div>
+
+      <p>
+        Welcome to Polar! This is absolutely my experimental zone for random things I find interesting.
+        Actually more like a guide for myself in case I need it in the future :)
+      </p>
+
+      <hr>
+
+      <h2>1. Get a website domain</h2>
+      <p>Do note that 1st year prices are likely promotional, and subsequent annual renewal fees will be much higher.</p>
+
+      <h2>2. Add Your Site to Cloudflare</h2>
+      <ol>
+        <li>Log in to your <strong><a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Dashboard</a></strong>.</li>
+        <li>Click <strong>Add a site</strong> in the top right.</li>
+        <li>Enter your apex domain (e.g. <code>909090909.xyz</code>) and select the <strong>Free</strong> tier plan.</li>
+      </ol>
+
+      <hr>
+
+      <h2>3. Update Your Registrar Nameservers</h2>
+      <p>Cloudflare will scan your existing DNS records and provide you with two assigned nameservers, such as:</p>
+      <ul>
+        <li><code>ns1.cloudflare.com</code></li>
+        <li><code>ns2.cloudflare.com</code></li>
+      </ul>
+
+      <p>Head over to where you purchased your domain:</p>
+      <ol>
+        <li>Find the <strong>Custom DNS / Nameservers</strong> settings.</li>
+        <li>Replace the default registrar nameservers with the Cloudflare nameservers provided.</li>
+        <li>Save changes. <em>(Propagation takes some time, and you might have to try accessing it on other networks due to DNS caching).</em></li>
+      </ol>
+
+      <blockquote>
+        <p><strong>Tip:</strong> If the domain is taking too long to load:</p>
+        <ul>
+          <li><strong>Test on mobile data (4G/5G):</strong> Your phone carrier usually refreshes DNS much faster than home Wi-Fi.</li>
+          <li><strong>Flush your local DNS cache:</strong> On Mac, run <code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code> in Terminal. On Windows, run <code>ipconfig /flushdns</code>.</li>
+          <li><strong>Check global status:</strong> Use a site like <strong><a href="https://www.whatsmydns.net/" target="_blank" rel="noopener">whatsmydns.net</a></strong> to see if your records have propagated globally.</li>
+        </ul>
+      </blockquote>
+
+      <hr>
+
+      <h2>4. Connect via Cloudflare Tunnel (<code>cloudflared</code>)</h2>
+      <p>Instead of opening router ports or exposing a public home IP with standard <code>A</code> records, I used a <strong>Cloudflare Tunnel</strong>:</p>
+      <ol>
+        <li>Install <code>cloudflared</code> on the server or run it as a Docker container.</li>
+        <li>In <strong>Cloudflare Zero Trust</strong> &rarr; <strong>Networks</strong> &rarr; <strong>Tunnels</strong>, create a new tunnel.</li>
+        <li>Add a <strong>Public Hostname</strong>:
+          <ul>
+            <li><strong>Domain:</strong> <code>909090909.xyz</code></li>
+            <li><strong>Type:</strong> <code>HTTP</code></li>
+            <li><strong>URL:</strong> <code>localhost:8080</code> (or the internal Docker container port).</li>
+          </ul>
+        </li>
+        <li>Cloudflare automatically handles the internal DNS routing for you (creating a secure <code>CNAME</code> pointing to <code>&lt;tunnel-id&gt;.cfargotunnel.com</code>). Zero router port forwarding needed!</li>
+      </ol>
+
+      <blockquote>
+        <p><strong>Why Cloudflare Tunnel?</strong> Your real home IP address stays 100% private, you don't need a static IP, and you never have to touch your home router's firewall.</p>
+      </blockquote>
+
+      <hr>
+
+      <h2>Conclusion</h2>
+      <p>Once the nameservers have propagated and your tunnel is active, your website is live worldwide at <code>909090909.xyz</code>, complete with Cloudflare's standard protection!</p>
+    </article>
+  </main>
+
+  <footer class="container footer">
+    <p>&copy; 2026 Snow</p>
+    <ul class="nav-links">
+      <li><a href="/terms">Terms of Service</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="https://github.com/adieltan" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://discord.gg/dHGqUZNqCu" target="_blank" rel="noopener">Discord</a></li>
+    </ul>
+  </footer>
+
+</body>
+
+</html>

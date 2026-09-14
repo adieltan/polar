@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Posts - Polar</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css?v=4">
 </head>
 
 <body>
@@ -33,8 +33,14 @@
       </p>
 
       <div style="margin-top: 2rem;">
-        <ul id="posts-container" class="posts-list">
-          <li style="color: var(--text-muted); font-size: 0.9rem;">Loading posts...</li>
+        <ul class="posts-list">
+          <li class="post-item">
+            <div class="post-meta">
+              <span class="post-date">Sep 2026</span>
+              <a href="/posts/new-website-who-dis" class="post-title">New Website, Who Dis?</a>
+            </div>
+            <p class="post-desc">A quick introduction to Polar: why I built it and how it is hosted.</p>
+          </li>
         </ul>
       </div>
     </section>
@@ -49,40 +55,6 @@
       <li><a href="https://discord.gg/dHGqUZNqCu" target="_blank" rel="noopener">Discord</a></li>
     </ul>
   </footer>
-
-  <script>
-    async function loadPosts() {
-      const container = document.getElementById("posts-container");
-      try {
-        const res = await fetch("/posts/index.json");
-        const posts = await res.json();
-
-        if (!posts || posts.length === 0) {
-          container.innerHTML = '<li style="color: var(--text-muted);">No posts published yet.</li>';
-          return;
-        }
-
-        function formatMonth(dateStr) {
-          if (!dateStr) return "";
-          const date = new Date(dateStr);
-          return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
-        }
-
-        container.innerHTML = posts.map(post => `
-          <li class="post-item">
-            <div class="post-meta">
-              <span class="post-date">${formatMonth(post.date)}</span>
-              <a href="/post?post=${post.slug}" class="post-title">${post.title}</a>
-            </div>
-            <p class="post-desc">${post.description}</p>
-          </li>
-        `).join("");
-      } catch (err) {
-        container.innerHTML = '<li style="color: var(--text-muted);">Failed to load posts list.</li>';
-      }
-    }
-    loadPosts();
-  </script>
 
 </body>
 

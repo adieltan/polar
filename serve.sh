@@ -19,6 +19,18 @@ class CleanURLHandler(http.server.SimpleHTTPRequestHandler):
             return orig_path + ".html"
         return orig_path
 
+    def send_error(self, code, message=None, explain=None):
+        if code == 404 and os.path.exists("404.html"):
+            self.send_response(404)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            with open("404.html", "rb") as f:
+                content = f.read()
+            self.send_header("Content-Length", str(len(content)))
+            self.end_headers()
+            self.wfile.write(content)
+            return
+        super().send_error(code, message, explain)
+
 with socketserver.TCPServer(("", port), CleanURLHandler) as httpd:
     try:
         httpd.serve_forever()
